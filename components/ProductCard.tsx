@@ -12,13 +12,16 @@ export default function ProductCard({ product }: { product: any }) {
         style={{ backgroundImage: `url('${product.image}')` }}
         aria-label={product.name}
       />
-      <div className="p-3 sm:p-4">
-        <h3 className="font-semibold text-sm sm:text-base leading-snug">{product.name}</h3>
-        <p className="mt-1 text-xs sm:text-sm text-neutral-600">{product.description}</p>
-
+      <div className="p-2">
+        <h3 className="text-xs sm:text-sm font-semibold leading-snug line-clamp-2">
+          {product.name}
+        </h3>
+        <p className="mt-0.5 text-[11px] sm:text-xs text-neutral-600 line-clamp-2">
+          {product.description}
+        </p>
         <button
           onClick={() => add({ id: product.id, name: product.name, image: product.image })}
-          className="mt-3 px-3 py-1.5 bg-himetal-blue text-white rounded-lg text-xs sm:text-sm hover:bg-himetal-celeste transition"
+          className="mt-2 px-2 py-1 bg-himetal-blue text-white rounded-md text-xs hover:bg-himetal-celeste transition"
         >
           Agregar
         </button>
