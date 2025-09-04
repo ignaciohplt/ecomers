@@ -6,22 +6,33 @@ export default function ProductCard({ product }: { product: any }) {
   const { add } = useCart();
 
   return (
-    <div className="group aspect-square overflow-hidden rounded-md border bg-white shadow-sm hover:shadow-md transition flex flex-col">
+    <div
+      className="group w-full max-w-[200px] sm:max-w-[210px] md:max-w-[220px]
+                 aspect-square overflow-hidden rounded-md border bg-white
+                 shadow-sm hover:shadow-md transition flex flex-col"
+    >
+      {/* Imagen */}
       <div
         className="flex-1 bg-cover bg-center"
         style={{ backgroundImage: `url('${product.image}')` }}
         aria-label={product.name}
       />
-      <div className="p-2">
+
+      {/* Contenido */}
+      <div className="p-2 flex flex-col justify-between">
         <h3 className="text-xs sm:text-sm font-semibold leading-snug line-clamp-2">
           {product.name}
         </h3>
         <p className="mt-0.5 text-[11px] sm:text-xs text-neutral-600 line-clamp-2">
           {product.description}
         </p>
+
         <button
-          onClick={() => add({ id: product.id, name: product.name, image: product.image })}
-          className="mt-2 px-2 py-1 bg-himetal-blue text-white rounded-md text-xs hover:bg-himetal-celeste transition"
+          onClick={() =>
+            add({ id: product.id, name: product.name, image: product.image })
+          }
+          className="mt-2 px-2 py-1 bg-himetal-blue text-white rounded-md text-xs 
+                     hover:bg-himetal-celeste transition"
         >
           Agregar
         </button>
