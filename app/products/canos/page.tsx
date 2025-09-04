@@ -1,11 +1,11 @@
-import { getProducts } from "../../../lib/products";
 import ProductCard from "../../../components/ProductCard";
+import { getProducts } from "../../../lib/products";
 
 export default async function CanosPage() {
   const products = await getProducts();
-
-  // ✅ solo productos con category "canos"
-  const canos = products.filter((p: any) => p.category === "canos");
+  const canos = products.filter(
+    (p: any) => (p.category || "").toLowerCase().trim() === "canos"
+  );
 
   return (
     <section className="space-y-4">

@@ -1,11 +1,11 @@
-import { getProducts } from "../../../lib/products";
 import ProductCard from "../../../components/ProductCard";
+import { getProducts } from "../../../lib/products";
 
 export default async function ChapasPage() {
   const products = await getProducts();
-
-  // ✅ solo productos con category "chapas"
-  const chapas = products.filter((p: any) => p.category === "chapas");
+  const chapas = products.filter(
+    (p: any) => (p.category || "").toLowerCase().trim() === "chapas"
+  );
 
   return (
     <section className="space-y-4">
