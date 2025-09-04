@@ -6,7 +6,7 @@ export default function ProductCard({ product }: { product: any }) {
   const { add } = useCart();
 
   return (
-    <div className="group overflow-hidden rounded-xl border bg-white shadow-sm hover:shadow-md transition flex flex-col">
+    <div className="group overflow-hidden rounded-md border bg-white shadow-sm hover:shadow-md transition flex flex-col">
       <div
         className="h-32 sm:h-36 md:h-40 bg-cover bg-center"
         style={{ backgroundImage: `url('${product.image}')` }}
