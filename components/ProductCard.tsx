@@ -1,32 +1,27 @@
-'use client';
-import { useState } from "react";
-import useCart from "../lib/cartStore";
-
-export default function ProductCard({ product }: { product: any }) {
-  const { addItem } = useCart();
-  const [src, setSrc] = useState(product.image || "/images/placeholder.jpg");
-
+export default function ProductCard({ product, onAdd }: any) {
   return (
-    <div className="rounded-2xl border bg-white shadow-md overflow-hidden flex flex-col hover:shadow-lg transition">
-      <img
-        src={src}
-        alt={product.name}
-        className="w-full h-44 object-cover"
-        onError={() => setSrc("/images/placeholder.jpg")} // fallback si falta la imagen
-        loading="lazy"
+    <div className="group overflow-hidden rounded-xl border bg-white shadow-sm hover:shadow-md transition flex flex-col">
+      {/* Imagen más baja */}
+      <div
+        className="h-32 sm:h-36 md:h-40 bg-cover bg-center"
+        style={{ backgroundImage: `url('${product.image}')` }}
       />
-      <div className="p-4 flex-1 flex flex-col">
-        <h3 className="font-semibold text-lg">{product.name}</h3>
-        <p className="text-sm text-neutral-600 mt-1">{product.description}</p>
 
-        <div className="mt-auto pt-3 flex items-center justify-end">
-          <button
-            onClick={() => addItem({ ...product, quantity: 1 })}
-            className="px-4 py-2 rounded-xl bg-himetal-blue text-white text-sm hover:bg-himetal-celeste transition"
-          >
-            Agregar
-          </button>
-        </div>
+      {/* Contenido */}
+      <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
+        <h3 className="font-semibold text-sm sm:text-base leading-snug">
+          {product.name}
+        </h3>
+        <p className="mt-1 text-xs sm:text-sm text-neutral-600">
+          {product.description}
+        </p>
+
+        <button
+          onClick={() => onAdd(product)}
+          className="mt-3 px-3 py-1.5 bg-himetal-blue text-white rounded-lg text-xs sm:text-sm hover:bg-himetal-celeste transition"
+        >
+          Agregar
+        </button>
       </div>
     </div>
   );
