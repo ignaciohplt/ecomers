@@ -6,13 +6,13 @@ export default function ProductCard({ product }: { product: any }) {
   const { add } = useCart();
 
   return (
-    <div className="group overflow-hidden rounded-md border bg-white shadow-sm hover:shadow-md transition flex flex-col">
+    <div className="group aspect-square overflow-hidden rounded-md border bg-white shadow-sm hover:shadow-md transition flex flex-col">
       <div
-        className="h-32 sm:h-36 md:h-40 bg-cover bg-center"
+        className="flex-1 bg-cover bg-center"
         style={{ backgroundImage: `url('${product.image}')` }}
         aria-label={product.name}
       />
-      <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
+      <div className="p-3 sm:p-4">
         <h3 className="font-semibold text-sm sm:text-base leading-snug">{product.name}</h3>
         <p className="mt-1 text-xs sm:text-sm text-neutral-600">{product.description}</p>
 
